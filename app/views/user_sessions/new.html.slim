@@ -1,0 +1,6 @@
+p.login-box-msg Sign in to start your session
+= simple_form_for @user do |f|
+  = f.input :email
+  = f.input :password
+
+  = f.button :submit

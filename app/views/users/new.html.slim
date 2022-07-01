@@ -1,12 +1,9 @@
-.box.box-primary
-  = simple_form_for @user do |f|
-    .box-body
-      = f.error_notification
-      = f.input :user_name
-      = f.input :email
-      = f.input :role
-      = f.input :password
-      = f.input :password_confirmation
+= simple_form_for @user do |f|
+  = f.error_notification
+  = f.input :user_name
+  = f.input :email
+  = f.input :role
+  = f.input :password
+  = f.input :password_confirmation
 
-    .box-footer
-      = f.button :submit
+  = f.button :submit
