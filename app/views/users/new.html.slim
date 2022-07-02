@@ -1,9 +1,12 @@
-= simple_form_for @user do |f|
-  = f.error_notification
-  = f.input :user_name
-  = f.input :email
-  = f.input :role
-  = f.input :password
-  = f.input :password_confirmation
-
-  = f.button :submit
+- form_with model: @user, local: true do |f|
+  = f.label :user_name
+  = f.text_field :user_name
+  = f.label :role
+  = f.text_field :role
+  = f.label :email
+  = f.email_field :email
+  = f.label :password
+  = f.password_field :password
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation
+  = f.submit '登録'
