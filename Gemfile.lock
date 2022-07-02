@@ -66,6 +66,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
@@ -77,6 +78,10 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     erubi (1.10.0)
+    faraday (2.3.0)
+      faraday-net_http (~> 2.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (2.0.3)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -90,6 +95,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jwt (2.4.1)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -100,6 +106,8 @@ GEM
     mini_mime (1.1.2)
     minitest (5.16.1)
     msgpack (1.5.2)
+    multi_json (1.15.0)
+    multi_xml (0.6.0)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -119,6 +127,15 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
+    oauth (0.5.10)
+    oauth2 (1.4.9)
+      faraday (>= 0.17.3, < 3.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    paranoia (2.6.0)
+      activerecord (>= 5.1, < 7.1)
     pg (1.4.1)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -155,6 +172,21 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
+    ruby2_keywords (0.0.5)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.5.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
+    sorcery (0.14.0)
+      bcrypt (~> 3.1)
+      oauth (~> 0.4, >= 0.4.4)
+      oauth2 (~> 1.0, >= 0.8.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -170,7 +202,9 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.10-x86_64-linux)
       railties (>= 6.0.0)
+    temple (0.8.2)
     thor (1.2.1)
+    tilt (2.0.10)
     timeout (0.3.0)
     turbo-rails (1.1.1)
       actionpack (>= 6.0.0)
@@ -197,9 +231,13 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  paranoia
   pg
   puma (~> 5.0)
   rails (~> 7.0.3)
+  simple_form
+  slim-rails
+  sorcery (= 0.14.0)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
@@ -209,7 +247,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 2.7.4p191
 
 BUNDLED WITH
-   2.3.7
+   2.3.8
