@@ -1,6 +1,6 @@
-p.login-box-msg Sign in to start your session
-= simple_form_for @user do |f|
-  = f.input :email
-  = f.input :password
-
-  = f.button :submit
+= form_with url: login_path, local: true do |f|
+  = f.label :email
+  = f.text_field :email
+  = f.label :password
+  = f.password_field :password
+  = f.submit 'ログイン'

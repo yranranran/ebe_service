@@ -4,6 +4,11 @@ html
     = render 'layouts/meta_tags'
 
   body
-    section.container.page-content
-      main = yield
+    - if logged_in?
+      = render 'shared/header'
+    - else
+      = render 'shared/before_login_header'
+    = render 'shared/flash_message'
+    main = yield
+    = render 'shared/footer'
 
