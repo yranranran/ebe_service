@@ -1,4 +1,4 @@
-//= require jquery3
-//= require jquery-ujs
+//= require jquery
+//= require jquery_ujs
 //= require activestorage
 //= require_tree .
