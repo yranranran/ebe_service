@@ -1,4 +1,4 @@
 <header>
- <%= link_to 'ユーザー名', '#' %>
- <%= link_to 'ログアウト', logout_path, method: :delete %>
+ <%= link_to "#{current_user.name}", '#' %>
+ <%= link_to (t 'defaults.logout'), logout_path, method: :delete %>
 </header>
