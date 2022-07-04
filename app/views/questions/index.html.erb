@@ -1,0 +1,19 @@
+<!-- 検索フォーム -->
+<form>
+  <div>
+    <input placeholder="検索ワード" type="search">
+      <div>
+        input type="submit" value="検索">
+      </div>
+  </div>
+</form>
+
+
+<!-- 掲示板一覧 -->
+<div>
+  <% if @questions.present? %>
+    <%= render @questions %>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
+</div>

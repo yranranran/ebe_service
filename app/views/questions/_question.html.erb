@@ -1,0 +1,21 @@
+<div>
+  <h4>
+    <a href="#">
+      <%= question.title %>
+    </a>
+  </h4>
+  <div>
+    <a href="#"><%= icon 'fas', 'trash', class: 'pr-1' %></a>
+    <a href="#"><%= icon 'fa', 'pen' %></a>
+  </div>
+  <ul>
+    <li>
+      <%= icon 'far', 'user' %>
+      <%= question.user.name %>
+    </li>
+      <%= icon 'far', 'calendar' %>
+      <%= l question.created_at, format: :long %>
+    </li>
+  </ul>
+  <p><%= question.body %></p>
+</div>
