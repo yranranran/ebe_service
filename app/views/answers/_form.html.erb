@@ -1,0 +1,10 @@
+<div>
+  <div>
+    <%= form_with model: answer, url: [question, answer], local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :body %>
+      <%= f.text_area :body, id: 'js-new-answer-body', row: 4, placeholder: Answer.human_attribute_name(:body) %>
+      <%= f.submit t('defaults.post') %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<ul>
+  <li>
+    <%= link_to '#', id: "button-edit-#{question.uuid}" do %>
+      <%= icon 'fa', 'pen' %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to '#', id: "button-delete-#{question.uuid}" do %>
+      <%= icon 'fas', 'trash' %>
+    <% end %>
+  </li>
+</ul>
