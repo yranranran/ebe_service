@@ -1,6 +1,4 @@
 class Question < ApplicationRecord
-  before_create -> { self.uuid = SecureRandom.uuid }
-
   belongs_to :user
   has_many :answers, dependent: :destroy
 
