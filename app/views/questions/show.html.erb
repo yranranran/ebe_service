@@ -1,0 +1,29 @@
+<div>
+  <div>
+    <div>
+      <h1><%= t('.title') %></h1>
+      <!-- 質問内容 -->
+      <article>
+        <div>
+          <div>
+            <div>
+              <h3><%= @question.title %></h3>
+              <%= render 'crud_menus', question: @question %>
+              <ul>
+                <li>by <%= @question.user.name %></li>
+                <li><%= l @question.created_at, format: :long  %></li>
+              </ul>
+            </div>
+          </div>
+          <%= simple_format(@question.body) %>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 回答フォーム -->
+  <%= render 'answers/form', { question: @question, answer: @answer } %>
+
+  <!-- 回答エリア -->
+  <%= render 'answers/answers', { answers: @answers } %>
+</div>

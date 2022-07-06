@@ -1,0 +1,30 @@
+<tr id="answer-<%= answer.id %>">
+  <td>
+    <h3><%= answer.user.name %></h3>
+    <div id="js-answer-<%= answer.id %>">
+      <%= simple_format(answer.body) %>
+    </div>
+    <div id="js-textarea-comment-box-<%= answer.id %>" style="display: none;">
+      <textarea id="js-textarea-answer-<%= answer.id %>" class="form-control mb-1"><%= answer.body %></textarea>
+      <button class="js-button-edit-comment-cancel" data-answer-id="<%= answer.id %>">キャンセル</button>
+      <button class="js-button-comment-update" data-answer-id="<%= answer.id %>">更新</button>
+    </div>
+  </td>
+
+  <% if current_user.own?(answer) %>
+    <td>
+      <ul>
+        <li>
+          <a href="#" class='js-edit-answer-button' data-answer-id="<%= answer.id %>">
+            <%= icon 'fa', 'pen' %>
+          </a>
+        </li>
+        <li>
+          <a href="#" class='js-delete-comment-button' data-answer-id="<%= answer.id %>">
+            <%= icon 'fas', 'trash' %>
+          </a>
+        </li>
+      </ul>
+    </td>
+  <% end %>
+</tr>

@@ -21,6 +21,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
+    @answers = @question.answers.includes(:user).order(created_at: :desc)
   end
 
   private

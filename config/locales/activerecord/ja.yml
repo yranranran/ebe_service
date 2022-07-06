@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      answer: '回答'
     attributes:
       user:
         email: 'メールアドレス'
@@ -11,3 +12,5 @@ ja:
       question:
         title: 'タイトル'
         body: '本文'
+      answer:
+        body: '回答'
