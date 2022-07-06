@@ -1,11 +1,11 @@
 <ul>
   <li>
-    <%= link_to '#', id: "button-edit-#{question.id}" do %>
+    <%= link_to edit_question_path(question), id: "button-edit-#{question.id}" do %>
       <%= icon 'fa', 'pen' %>
     <% end %>
   </li>
   <li>
-    <%= link_to '#', id: "button-delete-#{question.id}" do %>
+    <%= link_to question_path(question), id: "button-delete-#{question.id}", method: :delete, data: { confirm: t('defaults.message.delete_confirm') } do %>
       <%= icon 'fas', 'trash' %>
     <% end %>
   </li>

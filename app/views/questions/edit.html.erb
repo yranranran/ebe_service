@@ -1,0 +1,9 @@
+<% content_for(:title, @question.title) %>
+<div>
+  <div>
+    <div>
+      <h1><%= t('.title') %></h1>
+      <%= render 'form', { question: @question } %>
+    </div>
+  </div>
+</div>
