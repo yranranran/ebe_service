@@ -14,3 +14,10 @@ end
       body: "本文#{index}"
   )
 end
+
+20.times do |index|
+  Evidence.create(
+      title: "タイトル#{index}",
+      body: "本文#{index}"
+  )
+end

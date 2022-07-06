@@ -14,3 +14,6 @@ ja:
         body: '本文'
       answer:
         body: '回答'
+      evidence:
+        title: 'タイトル'
+        body: '本文'
