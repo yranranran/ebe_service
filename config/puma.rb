@@ -13,5 +13,3 @@ on_worker_boot do
   # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
   ActiveRecord::Base.establish_connection
 end
-
-heroku config:set RACK_TIMEOUT_SERVICE_TIMEOUT=20

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: %i[create], shallow: true
   end
+  resources :evidences, only: %i[index]
 end
