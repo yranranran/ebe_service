@@ -1,4 +1,4 @@
-<%= t '.title' %>
+<% content_for(:title, t('.title')) %>
   <%= form_with url: login_path, local: true do |f| %>
     <%= f.label :email, User.human_attribute_name(:email) %>
     <%= f.text_field :email %>
