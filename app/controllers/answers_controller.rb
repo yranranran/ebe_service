@@ -1,10 +1,10 @@
 class AnswersController < ApplicationController
   def create
-    answer = current_user.answer.build(answer_params)
+    answer = current_user.answers.build(answer_params)
     if answer.save
-      redirect_to question_path(answer.question.uuid), alert: t('defaults.message.created', item: Answer.model_name.human)
+      redirect_to question_path(answer.question), alert: t('defaults.message.created', item: Answer.model_name.human)
     else
-      redirect_to question_path(answer.question.uuid), alert: t('defaults.message.not_created', item: Answer.model_name.human)
+      redirect_to question_path(answer.question), alert: t('defaults.message.not_created', item: Answer.model_name.human)
     end
   end
 
