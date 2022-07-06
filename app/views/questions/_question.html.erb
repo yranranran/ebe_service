@@ -2,7 +2,7 @@
   <h4>
       <%= link_to question.title, question_path(question) %>
   </h4>
-  <%= render 'crud_menus', question: question %>
+  <%= render 'crud_menus', question: question if current_user.own?(question) %>
   <ul>
     <li>
       <%= icon 'far', 'user' %>
