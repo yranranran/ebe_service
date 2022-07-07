@@ -4,6 +4,8 @@ class Evidence < ApplicationRecord
   has_many :question_evidences
   has_many :sources, through: :evidence_sources
   has_many :evidence_sources
+  has_many :taxonomies, through: :article_tags
+  has_many :article_tags
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 65_535 }
