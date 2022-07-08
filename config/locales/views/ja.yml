@@ -39,3 +39,12 @@ ja:
       title: '質問詳細'
     edit:
       title: '質問編集'
+    bookmark_questions:
+      title: 'ブックマーク中の質問一覧'
+      no_result: 'ブックマーク中の質問がありません'
+  bookmark_questions:
+    create:
+      success: 'ブックマークしました'
+    destroy:
+      success: 'ブックマークを外しました'
+  
