@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :questions do
     resources :answers, only: %i[create], shallow: true
+    collection do
+      get :bookmark_questions
+    end
   end
   resources :evidences, only: %i[index]
+  resources :bookmark_questions, only: %i[create destroy]
 end

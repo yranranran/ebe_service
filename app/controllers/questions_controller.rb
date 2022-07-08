@@ -41,6 +41,10 @@ class QuestionsController < ApplicationController
     redirect_to questions_path, alert: t('defaults.message.deleted', item: Question.model_name.human)
   end
 
+  def bookmarks
+    @bookmark_questions = current_user.bookmark_questions.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def find_question
