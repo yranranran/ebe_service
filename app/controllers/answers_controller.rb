@@ -9,6 +9,10 @@ class AnswersController < ApplicationController
     @answer.destroy!
   end
 
+  def like_answers
+    @like_answers = current_user.like_answers_answers.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def answer_params

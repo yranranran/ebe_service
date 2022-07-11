@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :evidences
   has_many :bookmark_questions, dependent: :destroy
   has_many :bookmark_questions_questions, through: :bookmark_questions, source: :question
+  has_many :like_answers, dependent: :destroy
+  has_many :like_answers_answers, through: :like_answers, source: :answer
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -28,5 +30,17 @@ class User < ApplicationRecord
 
   def bookmark?(question)
     bookmark_questions_questions.include?(question)
+  end
+
+  def like_answer(answer)
+    like_answers_answers << answer
+  end
+
+  def unlike_answer(answer)
+    like_answers_answers.destroy(answer)
+  end
+
+  def like_answer?(answer)
+    like_answers_answers.include?(answer)
   end
 end

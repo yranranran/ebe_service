@@ -47,4 +47,9 @@ ja:
       success: 'ブックマークしました'
     destroy:
       success: 'ブックマークを外しました'
+  like_answers:
+    create:
+      success: 'いいねしました'
+    destroy:
+      success: 'いいねを取り消しました'
   

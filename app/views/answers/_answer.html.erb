@@ -10,21 +10,11 @@
       <button class="js-button-answer-update" data-answer-id="<%= answer.id %>">更新</button>
     </div>
   </td>
-
+  <td>
   <% if current_user.own?(answer) %>
-    <td>
-      <ul>
-        <li>
-          <a href="#" class='js-edit-answer-button' data-answer-id="<%= answer.id %>">
-            <%= icon 'fa', 'pen' %>
-          </a>
-        </li>
-        <li>
-          <%= link_to answer_path(answer), class: 'js-delete-answer-button', method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, remote: true do %>
-            <%= icon 'fa-solid', 'trash' %>
-          <% end %>
-        </li>
-      </ul>
-    </td>
+    <%= render 'answers/crud_menus', answer: answer %>
+  <% else %>
+    <%= render 'answers/like_button', answer: answer %>
   <% end %>
+  </td>
 </tr>
