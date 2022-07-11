@@ -1,8 +1,8 @@
 <ul class='crud-menu-btn list-inline float-right'>
   <li class="list-inline-item">
-    <%= link_to 'edit_answer_path(answer)', id: "button-edit-#{answer.id}" do %>
+    <span data-answer-id=<%= answer.id %> class="js-edit-answer-button">
       <%= icon 'fa', 'pen' %>
-    <% end %>
+    </span>
   </li>
   <li class="list-inline-item">
   <%= link_to answer_path(answer), class: 'js-delete-answer-button', method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, remote: true do %>
