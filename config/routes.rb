@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :evidences, only: %i[index]
   resources :bookmark_questions, only: %i[create destroy]
   resources :like_answers, only: %i[create destroy]
+  resource :profile, only: %i[show edit update]
 end
