@@ -1,0 +1,7 @@
+$("#error_messages").remove()
+<% if @answer.errors.present? %>
+  $("#new_answer").prepend("<%= j(render('shared/error_messages', object: @answer)) %>")
+<% else %>
+  $("#js-table-answer").prepend("<%= j(render('answers/answer', answer: @answer)) %>")
+  $("#js-new-answer-body").val('')
+<% end %>
