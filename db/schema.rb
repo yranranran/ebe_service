@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_08_105428) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_11_041355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_105428) do
     t.index ["user_id"], name: "index_evidences_on_user_id"
   end
 
+  create_table "like_answers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_like_answers_on_answer_id"
+    t.index ["user_id", "answer_id"], name: "index_like_answers_on_user_id_and_answer_id", unique: true
+    t.index ["user_id"], name: "index_like_answers_on_user_id"
+  end
+
   create_table "question_evidences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "question_id", null: false
     t.uuid "evidence_id", null: false
@@ -161,6 +171,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_105428) do
   add_foreign_key "evidence_sources", "evidences"
   add_foreign_key "evidence_sources", "sources"
   add_foreign_key "evidences", "users"
+  add_foreign_key "like_answers", "answers"
+  add_foreign_key "like_answers", "users"
   add_foreign_key "question_evidences", "evidences"
   add_foreign_key "question_evidences", "questions"
   add_foreign_key "questions", "users"
