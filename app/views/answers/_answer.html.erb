@@ -4,10 +4,10 @@
     <div id="js-answer-<%= answer.id %>">
       <%= simple_format(answer.body) %>
     </div>
-    <div id="js-textarea-comment-box-<%= answer.id %>" style="display: none;">
+    <div id="js-textarea-answer-box-<%= answer.id %>" style="display: none;">
       <textarea id="js-textarea-answer-<%= answer.id %>" class="form-control mb-1"><%= answer.body %></textarea>
-      <button class="js-button-edit-comment-cancel" data-answer-id="<%= answer.id %>">キャンセル</button>
-      <button class="js-button-comment-update" data-answer-id="<%= answer.id %>">更新</button>
+      <button class="js-button-edit-answer-cancel" data-answer-id="<%= answer.id %>">キャンセル</button>
+      <button class="js-button-answer-update" data-answer-id="<%= answer.id %>">更新</button>
     </div>
   </td>
 
@@ -20,9 +20,9 @@
           </a>
         </li>
         <li>
-          <a href="#" class='js-delete-comment-button' data-answer-id="<%= answer.id %>">
-            <%= icon 'fas', 'trash' %>
-          </a>
+          <%= link_to answer_path(answer), class: 'js-delete-answer-button', method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, remote: true do %>
+            <%= icon 'fa-solid', 'trash' %>
+          <% end %>
         </li>
       </ul>
     </td>

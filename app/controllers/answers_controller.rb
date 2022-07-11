@@ -1,11 +1,12 @@
 class AnswersController < ApplicationController
   def create
-    answer = current_user.answers.build(answer_params)
-    if answer.save
-      redirect_to question_path(answer.question), alert: t('defaults.message.created', item: Answer.model_name.human)
-    else
-      redirect_to question_path(answer.question), alert: t('defaults.message.not_created', item: Answer.model_name.human)
-    end
+    @answer = current_user.answers.build(answer_params)
+    @answer.save
+  end
+
+  def destroy
+    @answer = current_user.answers.find(params[:id])
+    @answer.destroy!
   end
 
   private
