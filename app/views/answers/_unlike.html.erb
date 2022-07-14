@@ -1,3 +1,7 @@
-<%= link_to like_answer_path(current_user.like_answers.find_by(answer_id: answer.id)), id: "js-like-button-for-answer-#{answer.id}", class:"float-right", method: :delete, remote: true do %>
-  <%= icon 'fas', 'star' %>
+<% if current_user.present? %>
+  <%= link_to like_answer_path(current_user.like_answers.find_by(answer_id: answer.id)), id: "js-like-button-for-answer-#{answer.id}", class:"float-right", method: :delete, remote: true do %>
+    <%= icon 'fas', 'star' %>
+  <% end %>
+<% else %>
+  <span class="fa-solid fa-star like" id="like-<%= answer.id %>"></span>
 <% end %>
