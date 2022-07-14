@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_11_041355) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_14_020118) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,12 +53,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_041355) do
   end
 
   create_table "article_tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "taxonomy_id", null: false
-    t.integer "articable_id"
+    t.uuid "tag_id", null: false
     t.string "articable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["taxonomy_id"], name: "index_article_tags_on_taxonomy_id"
+    t.bigint "articable_id"
+    t.index ["tag_id"], name: "index_article_tags_on_tag_id"
   end
 
   create_table "authors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -158,14 +158,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_041355) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.integer "access_count_to_reset_password_page", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, where: "(deleted_at IS NULL)"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "article_tags", "taxonomies"
+  add_foreign_key "article_tags", "taxonomies", column: "tag_id"
   add_foreign_key "bookmark_questions", "questions"
   add_foreign_key "bookmark_questions", "users"
   add_foreign_key "evidence_sources", "evidences"
