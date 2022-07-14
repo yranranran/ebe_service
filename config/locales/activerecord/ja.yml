@@ -3,6 +3,19 @@ ja:
     models:
       user: 'ユーザー'
       answer: '回答'
+      author: '著者'
+      evidence: 'エビデンス'
+      taxonomy: '分類'
+      category: 'カテゴリ'
+      tag: 'タグ'
+      evidence_source: 'エビデンスの原著'
+      question: '質問'
+      bookmark_question: 'ブックマークされた質問'
+      question_evidence: '質問に関連したエビデンス'
+      ebe_service: 'コノタメ'
+      source: 'ソース'
+      source_author: 'ソースの著者'
+      article_tag: '関連タグ'
     attributes:
       user:
         email: 'メールアドレス'
