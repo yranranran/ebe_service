@@ -9,7 +9,7 @@
           <div>
             <div>
               <h3><%= @question.title %></h3>
-              <%= render 'crud_menus', question: @question if current_user.own?(@question) %>
+              <%= render 'crud_menus', question: @question if current_user && current_user.own?(@question) %>
               <ul>
                 <li>by <%= @question.user.name %></li>
                 <li><%= l @question.created_at, format: :long  %></li>

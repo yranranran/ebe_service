@@ -11,10 +11,10 @@
     </div>
   </td>
   <td>
-  <% if current_user.own?(answer) %>
+  <% if current_user && current_user.own?(answer) %>
     <%= render 'answers/crud_menus', answer: answer %>
   <% else %>
-    <%= render 'answers/like_button', answer: answer %>
+    <%= render 'answers/like_button', answer: answer, cookies: @cookies %>
   <% end %>
   </td>
 </tr>

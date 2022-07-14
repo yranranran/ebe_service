@@ -1,5 +1,17 @@
-<% if current_user.like_answer?(answer) %>
-  <%= render 'answers/unlike', { answer: answer } %>
+<% if current_user.present? %>
+  <% if current_user.like_answer?(answer) %>
+    <%= render 'answers/unlike', { answer: answer } %>
+  <% else %>
+    <%= render 'answers/like', { answer: answer } %>
+  <% end %>
 <% else %>
-  <%= render 'answers/like', { answer: answer } %>
+  <% if cookies.nil? %>
+    <%= render 'answers/like', { answer: answer } %>
+  <% else %>
+    <% if cookies.split(",").map(&:to_i).include?(answer.id) %>
+      <span class="far fa-heart like" id="like-<%= answer.id %>"></span>
+    <% else %>
+      <%= render 'answers/like', { answer: answer }  %>
+    <% end %>
+  <% end %>
 <% end %>
