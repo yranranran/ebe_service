@@ -1,1 +1,87 @@
-<%= link_to (t 'defaults.login'), login_path %>
+<header>
+  <nav class="menu">
+    <div class="nav-inner">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-3 bg-white">
+          <div class="inline-block">
+            <div class="logo-area p-2">
+              <%= link_to root_path do %>
+                <%= image_tag 'logo.png' %>
+              <% end %>
+            </div>
+          </div>
+          <div class="inline-block">
+            <ul class="grid grid-cols-3 place-content-center">
+              <li id="dropdown-wrapper" class="relative grid grid-cols-1">
+                <button onclick="toggleMenu()" class="relative block text-gray-700 text-center py-2 px-4 m-2">
+                  <span>はじめに</span>
+                <ul id="menu" class="hidden absolute left-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+                  <li class="block px-4 py-2 text-gray-800 hover:bg-green-500 hover:text-white">コノタメとは</li>
+                  <li class="block px-4 py-2 text-gray-800 hover:bg-green-500 hover:text-white">ご利用方法</li>
+                </ul>
+              </li>
+              <li id="dropdown-wrapper2" class="relative grid grid-cols-1">
+                <button onclick="toggleMenu2()" class="relative block text-gray-700 text-center py-2 px-4 m-2">
+                  <span>質問</span>
+                <ul id="menu2" class="hidden absolute left-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+                  <li class="block px-4 py-2 text-gray-800 hover:bg-green-500 hover:text-white">質問一覧</li>
+                  <li class="block px-4 py-2 text-gray-800 hover:bg-green-500 hover:text-white">新規投稿</li>
+                </ul>
+              </li>
+              <li class="relative grid grid-cols-1">
+                <span class="relative z-10 block text-gray-700 text-center py-2 px-4 m-2">エビデンス</span>
+              </li>
+            </ul>
+          </div>
+          <div class="inline-block">
+            <ul class="grid grid-cols-2 place-content-center float-right">
+              <li class="text-gray-700 text-center px-4 py-2 m-2">
+                <%= link_to (t 'defaults.register'), new_user_path %>
+              </li>
+              <li class="text-white text-center px-4 py-2 m-2">
+              <%= link_to (t 'defaults.login'), login_path, class: "rounded-full py-2 px-4 bg-green-500" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  var menu = document.getElementById("menu");
+  var menu2 = document.getElementById("menu2");
+
+  // open/close the menu when the user clicks on the button
+  function toggleMenu() {
+      if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+      } else {
+          menu.classList.add('hidden');
+      }
+  }
+
+  function toggleMenu2() {
+    if (menu2.classList.contains('hidden')) {
+        menu2.classList.remove('hidden');
+    } else {
+        menu2.classList.add('hidden');
+    }
+  }
+
+  // close the menu when the user clicks outside of it 
+  window.onclick = function (event) {
+      var dropdownWrapper = document.getElementById('dropdown-wrapper');
+      if (!dropdownWrapper.contains(event.target) && !menu.classList.contains('hidden')) {
+          menu.classList.add('hidden');
+      }
+  }
+
+  window.onclick = function (event) {
+      var dropdownWrapper2 = document.getElementById('dropdown-wrapper2');
+      if (!dropdownWrapper2.contains(event.target) && !menu2.classList.contains('hidden')) {
+          menu2.classList.add('hidden');
+      }
+  }
+</script>
