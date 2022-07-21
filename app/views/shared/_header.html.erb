@@ -8,19 +8,19 @@
     
     <div>
     <main id="main">
-      <span onclick="openMenu()" class="relative text-2xl font-semibold cursor-pointer hover:text-green-700">&#9776;</span>
+      <span id="openmenu" onclick="openMenu()" class="relative text-4xl font-semibold cursor-pointer hover:text-green-700">&#9776;</span>
+      <span id="closemenu" onclick="closeMenu()" class="hidden relative text-4xl font-semibold cursor-pointer hover:text-red-400">&times;</span>
     </main>
 
 
-    <aside id="menu0" class="absolute right-0 top-3 w-55 -mr-56 flex bg-white duration-700 rounded-lg shadow-xl">
-      <div class="px-3 pt-2 pb-4">
-        <%= link_to "javascript:void(0);", onclick:"closeMenu()", class:"text-right text-4xl hover:text-red-400" do %>&times;<% end %>
-        <%= link_to 'コノタメとは', "#", class:"block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to 'ご利用方法', "#", class:"mt-1 block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to '質問一覧', questions_path, class:"mt-1 block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to 'エビデンス', evidences_path, class:"mt-1 block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to 'マイページ', '#', class:"mt-1 block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to (t 'defaults.logout'), logout_path, method: :delete, class:"mt-1 block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
+    <aside id="menu0" class="hidden absolute mt-5 right-0 w-full flex bg-white duration-700 rounded-lg shadow-xl">
+      <div class="w-full x-3 pt-2 pb-4">
+        <%= link_to 'コノタメとは', "#", class:"block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
+        <%= link_to 'ご利用方法', "#", class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
+        <%= link_to '質問一覧', questions_path, class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
+        <%= link_to 'エビデンス', evidences_path, class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
+        <%= link_to 'マイページ', '#', class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
+        <%= link_to (t 'defaults.logout'), logout_path, method: :delete, class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
       </div>
     </aside>
     </div>
@@ -31,16 +31,20 @@
 <script> 
   var menu0 = document.getElementById("menu0");
   var main = document.getElementById("main");
+  var closemenu = document.getElementById("closemenu");
+  var openmenu = document.getElementById("openmenu");
   
   // show the menu
   function openMenu() {
-      menu0.classList.remove('-mr-56');
-      menu0.classList.add('mr-0');
+      menu0.classList.remove('hidden');
+      closemenu.classList.remove('hidden');
+      openmenu.classList.add('hidden');
   }
 
   // make the menu "go away"
   function closeMenu() {
-      menu0.classList.remove('mr-0');
-      menu0.classList.add('-mr-56');
+      menu0.classList.add('hidden');
+      closemenu.classList.add('hidden');
+      openmenu.classList.remove('hidden');
   }
 </script>
