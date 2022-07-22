@@ -1,31 +1,26 @@
-<header class="bg-white">
-  <div class="flex items-center justify-between px-4 py-3">
+<header class="bg-white md:flex md:justify-between md:items-center md:px-4 md:py-3">
+  <div class="flex items-center justify-between px-4 py-3 md:p-0 z-10 relative bg-white">
     <div>
       <%= link_to root_path do %>
         <%= image_tag 'logo.png', class:"h-14" %>
       <% end %>
     </div>
     
-    <div>
-    <main id="main">
-      <span id="openmenu" onclick="openMenu()" class="relative text-4xl font-semibold cursor-pointer hover:text-green-700">&#9776;</span>
-      <span id="closemenu" onclick="closeMenu()" class="hidden relative text-4xl font-semibold cursor-pointer hover:text-red-400">&times;</span>
-    </main>
-
-
-    <aside id="menu0" class="hidden absolute mt-5 right-0 w-full flex bg-white duration-700 rounded-lg shadow-xl">
-      <div class="w-full x-3 pt-2 pb-4">
-        <%= link_to 'コノタメとは', "#", class:"block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to 'ご利用方法', "#", class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to '質問一覧', questions_path, class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to 'エビデンス', evidences_path, class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to 'マイページ', '#', class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-        <%= link_to (t 'defaults.logout'), logout_path, method: :delete, class:"mt-1 block px-5 py-1 text-gray-800 font-semibold rounded hover:bg-gray-300" %>
-      </div>
-    </aside>
+    <div id="main" class="md:hidden">
+      <span id="openmenu" onclick="openMenu()" class="text-4xl font-semibold cursor-pointer hover:text-green-700">&#9776;</span>
+      <span id="closemenu" onclick="closeMenu()" class="hidden text-4xl font-semibold cursor-pointer hover:text-red-400">&times;</span>
     </div>
   </div>
-  
+  <div id="mainsleep" class="hidden absolute">
+    <span class="fixed inset-0 h-full w-full bg-black opacity-50 cursor-default"></span>
+  </div>      
+  <nav id="menu0" class="hidden block z-10 relative px-3 pt-2 pb-4 md:flex md:p-0 bg-white rounded">
+    <%= link_to 'コノタメとは', "#", class:"block md:inline-block px-5 py-1 text-gray-700 font-semibold rounded hover:bg-gray-300" %>
+    <%= link_to '質問', questions_path, class:"mt-1 block md:inline-block px-5 py-1 text-gray-700 font-semibold rounded hover:bg-gray-300 md:mt-0 md:ml-2" %>
+    <%= link_to 'エビデンス', evidences_path, class:"mt-1 block md:inline-block px-5 py-1 text-gray-700 font-semibold rounded hover:bg-gray-300 md:mt-0 md:ml-2" %>
+    <%= link_to 'マイページ', '#', class:"mt-1 block md:inline-block px-5 py-1 text-gray-700 font-semibold rounded hover:bg-gray-300 md:mt-0 md:ml-2" %>
+    <%= link_to (t 'defaults.logout'), logout_path, method: :delete, class:"mt-1 block md:inline-block px-5 py-1 text-gray-700 font-semibold rounded hover:bg-gray-300 md:mt-0 md:ml-2 md:rounded-full md:bg-green-500 md:text-white md:ml-5" %>
+  </nav>
 </header>
 
 <script> 
@@ -33,12 +28,14 @@
   var main = document.getElementById("main");
   var closemenu = document.getElementById("closemenu");
   var openmenu = document.getElementById("openmenu");
+  var mainsleep = document.getElementById("mainsleep");
   
   // show the menu
   function openMenu() {
       menu0.classList.remove('hidden');
       closemenu.classList.remove('hidden');
       openmenu.classList.add('hidden');
+      mainsleep.classList.remove('hidden');
   }
 
   // make the menu "go away"
@@ -46,5 +43,6 @@
       menu0.classList.add('hidden');
       closemenu.classList.add('hidden');
       openmenu.classList.remove('hidden');
+      mainsleep.classList.add('hidden');
   }
 </script>
