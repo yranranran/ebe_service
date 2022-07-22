@@ -23,7 +23,9 @@
   </div>
 
   <!-- 回答フォーム -->
-  <%= render 'answers/form', { question: @question, answer: @answer } %>
+  <% if current_user %>
+    <%= render 'answers/form', { question: @question, answer: @answer } %>
+  <% end %>
 
   <!-- 回答エリア -->
   <%= render 'answers/answers', { answers: @answers } %>

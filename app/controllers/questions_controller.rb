@@ -13,9 +13,9 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
-      redirect_to questions_path, alert: t('defaults.message.created', item: Question.model_name.human)
+      redirect_to questions_path, success: t('defaults.message.created', item: Question.model_name.human)
     else
-      flash.now[:alert] = t('defaults.message.not_created', item: Question.model_name.human)
+      flash.now[:danger] = t('defaults.message.not_created', item: Question.model_name.human)
       render :new
     end
   end
@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy!
-    redirect_to questions_path, alert: t('defaults.message.deleted', item: Question.model_name.human)
+    redirect_to questions_path, success: t('defaults.message.deleted', item: Question.model_name.human)
   end
 
   def bookmark_questions
