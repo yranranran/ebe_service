@@ -1,18 +1,32 @@
 <% content_for(:title, t('.title')) %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1">
-      <h1><%= t('.title') %></h1>
-      <%= form_with model: @user, url: profile_path, local: true do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control mb-3' %>
-
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control mb-3' %>
-
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+<div class="grid grid-cols-1 place-content-center">
+  <div class="text-2xl font-bold justify-self-center px-3 mt-10 mb-10"><%= t('.head') %></div>
+  <div class="block w-full max-w-5xl justify-self-center px-3 mt-10">
+    <%= form_with model: @user, url: profile_path, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/6">
+          <%= f.label :email, class:"block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+        </div>
+        <div class="md:w-5/6">
+          <%= f.email_field :email, class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" %>
+        </div>
+      </div>
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/6">
+          <%= f.label :name, class:"block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+        </div>
+        <div class="md:w-5/6">
+          <%= f.text_field :name, class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" %>
+        </div>
+      </div>
+      <div class="md:flex md:items-center">
+      <div class="md:w-1/6"></div>
+      <div class="md:w-5/6 flex items-center justify-between">
+        <%= f.submit class:"shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+        <%= link_to t("defaults.password_reset"), '/password_resets/new', class:"inline-block text-green-500 font-bold" %>
+      </div>
+    </div>     
+    <% end %>
   </div>
 </div>
