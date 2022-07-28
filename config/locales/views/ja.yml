@@ -38,6 +38,9 @@ ja:
       no_result: '質問がありません'
     new:
       title: '質問投稿'
+      head: '質問を投稿する'
+    form:
+      submit: '投稿する'
     show:
       title: '質問詳細'
     edit:

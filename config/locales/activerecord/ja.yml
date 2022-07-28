@@ -25,6 +25,8 @@ ja:
       question:
         title: 'タイトル'
         body: '本文'
+        tag: 'タグ'
+        category: 'カテゴリー'
       answer:
         body: '回答'
       evidence:

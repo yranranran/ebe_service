@@ -8,11 +8,14 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @categories = Category.all
   end
 
   def create
     @question = current_user.questions.build(question_params)
+    sent_tags = params[:question][:name]&.split(',')
     if @question.save
+      @question.save_tag(sent_tags)
       redirect_to questions_path, success: t('defaults.message.created', item: Question.model_name.human)
     else
       flash.now[:danger] = t('defaults.message.not_created', item: Question.model_name.human)
@@ -26,10 +29,19 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.includes(:user).order(created_at: :desc)
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+    @tag_list = @question.tags.pluck(:name).join(',')
+  end
 
   def update
+    tag_list = params[:question][:name].split(',')
     if @question.update(question_params)
+      @old_relations = ArticleTag.where(articable_id: @question.id)
+      @old_relations.each do |relation|
+        relation.delete
+      end
+      @question.save_tag(tag_list)
       redirect_to @question, alert: t('defaults.message.updated', item: Question.model_name.human)
     else
       flash.now[:alert] = t('defaults.message.not_updated', item: Qustion.model_name.human)
@@ -52,6 +64,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :category_id, tag_ids: [])
   end
 end
