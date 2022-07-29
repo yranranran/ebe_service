@@ -1,13 +1,47 @@
-<%= form_with model: question, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, rows: 10 %>
-  </div>
-
-  <%= f.submit %>
-<% end %>
+<div class="block w-full max-w-5xl justify-self-center px-3 mt-10">
+  <%= form_with model: question, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/6">
+        <%= f.label :title, class:"block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+      </div>  
+      <div class="md:w-5/6">
+        <%= f.text_field :title, class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" %>
+      </div>
+    </div>
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/6">
+        <%= f.label :body, class:"block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+      </div>
+      <div class="md:w-5/6">
+        <%= f.text_area :body, rows: 10, class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" %>
+      </div>
+    </div>
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/6">
+        <%= f.label :tag, class:"block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+      </div>
+      <div class="md:w-5/6">
+        <%= f.text_field :name, value: tag_list, placeholder:",で区切ってください", class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" %>
+      </div>
+    </div>
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/6">
+        <%= f.label :category, class:"block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+      </div>
+      <div class="md:w-5/6">
+        <div class="inline-block relative w-66">
+          <%= f.collection_select :category_id, @categories, :id, :name, {prompt: "カテゴリーを選択してください"}, class:"block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" %>
+          <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center text-gray-700">&#9660;</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="md:flex md:items-center">
+      <div class="md:w-1/6"></div>
+      <div class="md:w-5/6">
+        <%= f.submit class:"shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    </div>
+  <% end %>
+</div>

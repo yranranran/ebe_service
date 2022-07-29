@@ -38,10 +38,12 @@ ja:
       no_result: '質問がありません'
     new:
       title: '質問投稿'
+      head: '質問を投稿する'
     show:
       title: '質問詳細'
     edit:
       title: '質問編集'
+      head: '質問を編集する'
     bookmark_questions:
       title: 'ブックマーク中の質問一覧'
       no_result: 'ブックマーク中の質問がありません'
@@ -60,9 +62,11 @@ ja:
       title: 'プロフィール'
     edit:
       title: 'プロフィール編集'
+      head: 'プロフィールを編集する'
   password_resets:
     new:
       title: 'パスワードリセット申請'
+      head: 'パスワードをリセットする'
       submit: '送信'
     edit:
       title: 'パスワードリセット'

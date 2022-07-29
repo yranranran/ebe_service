@@ -1,5 +1,5 @@
 <% content_for(:title, t('.title')) %>
-<div>
-  <h1><%= t('.title') %></h1>
-  <%= render 'form', { question: @question } %>
+<div class="grid grid-cols-1 place-content-center">
+  <div class="text-2xl font-bold justify-self-center px-3 mt-10 mb-10"><%= t('.head') %></div>
+  <%= render 'form', { question: @question, tag_list: @tag_list } %>
 </div>

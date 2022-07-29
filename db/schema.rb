@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_14_020118) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_26_062102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,9 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_020118) do
 
   create_table "article_tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tag_id", null: false
-    t.string "articable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "articable_type"
     t.bigint "articable_id"
     t.index ["tag_id"], name: "index_article_tags_on_tag_id"
   end
@@ -92,6 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_020118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_evidences_on_category_id"
     t.index ["user_id"], name: "index_evidences_on_user_id"
   end
 
@@ -120,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_020118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 

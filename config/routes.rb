@@ -18,9 +18,12 @@ Rails.application.routes.draw do
       get :bookmark_questions
     end
   end
-  resources :evidences, only: %i[index]
+  resources :evidences, only: %i[index create edit update destroy]
   resources :bookmark_questions, only: %i[create destroy]
   resources :like_answers, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
+  resources :categories, only: %i[index create edit update destroy]
+  resources :tags, only: %i[index create edit update destroy]
+  resources :authors, only: %i[index create edit update destroy]
 end

@@ -19,4 +19,5 @@
     </li>
   </ul>
   <p><%= question.body %></p>
+  <%= icon 'fa-solid', 'tag' %><%= question.tags.map(&:name).join(', ') %>
 </div>
