@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.build(question_params)
-    sent_tags = params[:question][:name]&.split(',')
+    sent_tags = params[:question][:name].split(',')
     if @question.save
       @question.save_tag(sent_tags)
       redirect_to questions_path, success: t('defaults.message.created', item: Question.model_name.human)
@@ -35,13 +35,13 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    tag_list = params[:question][:name].split(',')
+    sent_tags = params[:question][:name].split(',')
     if @question.update(question_params)
       @old_relations = ArticleTag.where(articable_id: @question.id)
       @old_relations.each do |relation|
         relation.delete
       end
-      @question.save_tag(tag_list)
+      @question.save_tag(sent_tags)
       redirect_to @question, alert: t('defaults.message.updated', item: Question.model_name.human)
     else
       flash.now[:alert] = t('defaults.message.not_updated', item: Qustion.model_name.human)
