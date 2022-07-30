@@ -1,20 +1,28 @@
 <% content_for(:title, t('.title')) %>
 <!-- 検索フォーム -->
-<form>
-  <div>
-    <input placeholder="検索ワード" type="search">
-      <div>
-        <input type="submit" value="検索">
-      </div>
-  </div>
-</form>
+<div class="grid grid-cols-1 md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto px-2 place-items-end">
+  <form class="w-full max-w-md mt-2 mb-5">
+    <div class="flex item-center">
+      <input placeholder="検索ワード" type="search" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500">
+        <div class="px-1">
+          <input type="submit" value="検索" class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+        </div>
+    </div>
+  </form>
+</div>
+
+<!-- 質問一覧ページの説明 -->
 
 
 <!-- 掲示板一覧 -->
-<div>
-  <% if @questions.present? %>
+<% if @questions.present? %>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-content-center md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto">
     <%= render @questions %>
-  <% else %>
-    <p><%= t('.no_result') %></p>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <p><%= t('.no_result') %></p>
+<% end %>
+
+<!-- ページネーション -->
+<%= paginate @questions %>
+

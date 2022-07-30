@@ -1,23 +1,27 @@
-<div>
-  <h4>
-      <%= link_to question.title, question_path(question) %>
-  </h4>
-  <% if current_user.present? %>
-    <% if current_user.own?(question) %>
-      <%= render 'crud_menus', question: question %>
-    <% else %>
-      <%= render 'bookmark_button', question: question %>
+<div class="max-w-sm w-11/12 rounded overflow-hidden shadow-lg justify-self-center mb-20">
+  <div class="flex items-center justify-center w-full h-48">
+    <% if question.category_id.present? %>
+      <%= image_tag "question_image.png", alt: "category_image", class: "rounded-full h-24 w-24" %>
+    <% else %> 
+      <%= image_tag "question_image.png", alt: "category_image", class: "rounded-full h-24 w-24" %>
     <% end %>
-  <% end %>
-  <ul>
-    <li>
-      <%= icon 'far', 'user' %>
-      <%= question.user.name %>
-    </li>
-      <%= icon 'far', 'calendar' %>
-      <%= l question.created_at, format: :long %>
-    </li>
-  </ul>
-  <p><%= question.body %></p>
-  <%= icon 'fa-solid', 'tag' %><%= question.tags.map(&:name).join(', ') %>
+  </div>
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2 flex items-center"><%= link_to question.title, question_path(question) %></div>
+    <% if current_user.present? %>
+      <% if current_user.own?(question) %>
+        <%= render 'crud_menus', question: question %>
+      <% else %>
+        <%= render 'bookmark_button', question: question %>
+      <% end %>
+    <% end %>
+    <p class="text-gray-700 text-base overflow-hidden h-24">
+      <%= question.body %>
+    </p>
+  </div>
+  <div class="px-6 pt-4 pb-2">
+    <% question.tags.each do |tag| %>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#<%= tag.name %></span>
+    <% end %>
+  </div>
 </div>

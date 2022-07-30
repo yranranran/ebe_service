@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: %i[edit update destroy]
 
   def index
-    @questions = Question.all.includes(:user).order(created_at: :desc)
+    @questions = Question.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
