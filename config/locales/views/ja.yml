@@ -75,3 +75,7 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
+  views:
+    pagination:
+      previous: '&#8592;&nbsp;&nbsp;Previous'
+      next: 'Next&nbsp;&nbsp;&#8594;'
